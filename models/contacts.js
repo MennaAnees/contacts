@@ -51,6 +51,18 @@ const contacts = new Schema(
   }
 });
 
+contacts.statics.addContact = function(contact){
+  var contact = new contactsModel({
+        email:contact.email,
+        mobile:contact.mobile,
+        firstName:contact.firstName,
+        lastName:contact.lastName,
+        userId:contact.userId,
+        country_code:contact.country_code,
+        birthDate:contact.birthDate
+    });
+  return contact.save()
+}
 
 const contactsModel = mongoose.model("contacts", contacts);
 module.exports = contactsModel;
